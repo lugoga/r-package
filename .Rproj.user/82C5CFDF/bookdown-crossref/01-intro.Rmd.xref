@@ -1,0 +1,10 @@
+h1:introduction Introduction
+h2:basic-structure-of-an-r-package Basic Structure of an R Package
+h3:description-file DESCRIPTION File
+h3:namespace-file NAMESPACE File
+h3:namespace-function-notation Namespace Function Notation
+h3:loading-and-attaching-a-package-namespace Loading and Attaching a Package Namespace
+h3:the-r-sub-directory The R Sub-directory
+h3:the-man-sub-directory The man Sub-directory
+h3:summary Summary
+

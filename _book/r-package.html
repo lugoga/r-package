@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bundle your codes in Package</title>
+  <meta name="description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
+  <meta name="generator" content="bookdown #bookdown:version# and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bundle your codes in Package" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="lugoga.github.com" />
+  
+  <meta property="og:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bundle your codes in Package" />
+  
+  <meta name="twitter:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
+  
+
+<meta name="author" content="Masumbuko Semba" />
+<meta name="author" content="Nyamisi Peter" />
+<meta name="author" content="Ismael Kimirei" />
+
+
+<meta name="date" content="2020-11-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+<!--bookdown:title:start-->
+<div id="header">
+<h1 class="title">Bundle your codes in Package</h1>
+<h2 class="subtitle"><em>R package development, writing good documentation and vignettes</em></h2>
+<p class="author"><em>Masumbuko Semba</em></p>
+<p class="author"><em>Nyamisi Peter</em></p>
+<p class="author"><em>Ismael Kimirei</em></p>
+<p class="date"><em>2020-11-13</em></p>
+</div>
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+<!--bookdown:toc2:start-->
+<ul>
+<li><a href="#cover-image-graphicscover"><span class="toc-section-number">1</span> cover-image: graphics/cover</a>
+<ul>
+<li><a href="#colophon">Colophon</a></li>
+<li><a href="#license">License</a></li>
+</ul></li>
+<li><a href="#introduction"><span class="toc-section-number">2</span> Introduction</a>
+<ul>
+<li><a href="#basic-structure-of-an-r-package"><span class="toc-section-number">2.1</span> Basic Structure of an R Package</a>
+<ul>
+<li><a href="#description-file"><span class="toc-section-number">2.1.1</span> DESCRIPTION File</a></li>
+<li><a href="#namespace-file"><span class="toc-section-number">2.1.2</span> NAMESPACE File</a></li>
+<li><a href="#namespace-function-notation"><span class="toc-section-number">2.1.3</span> Namespace Function Notation</a></li>
+<li><a href="#loading-and-attaching-a-package-namespace"><span class="toc-section-number">2.1.4</span> Loading and Attaching a Package Namespace</a></li>
+<li><a href="#the-r-sub-directory"><span class="toc-section-number">2.1.5</span> The R Sub-directory</a></li>
+<li><a href="#the-man-sub-directory"><span class="toc-section-number">2.1.6</span> The man Sub-directory</a></li>
+<li><a href="#summary"><span class="toc-section-number">2.1.7</span> Summary</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#r-package"><span class="toc-section-number">3</span> R package</a>
+<ul>
+<li><a href="#package-development"><span class="toc-section-number">3.1</span> Package Development</a></li>
+</ul></li>
+<li><a href="#functions"><span class="toc-section-number">4</span> Functions</a>
+<ul>
+<li><a href="#document"><span class="toc-section-number">4.1</span> Document</a></li>
+<li><a href="#dependencies"><span class="toc-section-number">4.2</span> Dependencies</a></li>
+<li><a href="#special-case"><span class="toc-section-number">4.3</span> Special Case</a></li>
+</ul></li>
+<li><a href="#installing-the-package"><span class="toc-section-number">5</span> Installing the package</a></li>
+<li><a href="#final-words"><span class="toc-section-number">6</span> Final Words</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<!--bookdown:toc2:end-->
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bundle your codes in Package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<div id="cover-image-graphicscover" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> cover-image: graphics/cover</h1>
+<p>Placeholder</p>
+<div id="colophon" class="section level2 unnumbered" number="">
+<h2 class="unnumbered" number="">Colophon</h2>
+</div>
+<div id="license" class="section level2 unnumbered" number="">
+<h2 class="unnumbered" number="">License</h2>
+<!--chapter:end:index.Rmd-->
+</div>
+</div>
+<div id="introduction" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Introduction</h1>
+<p>Placeholder</p>
+<div id="basic-structure-of-an-r-package" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Basic Structure of an R Package</h2>
+<div id="description-file" class="section level3" number="2.1.1">
+<h3 number="2.1.1"><span class="header-section-number">2.1.1</span> DESCRIPTION File</h3>
+</div>
+<div id="namespace-file" class="section level3" number="2.1.2">
+<h3 number="2.1.2"><span class="header-section-number">2.1.2</span> NAMESPACE File</h3>
+</div>
+<div id="namespace-function-notation" class="section level3" number="2.1.3">
+<h3 number="2.1.3"><span class="header-section-number">2.1.3</span> Namespace Function Notation</h3>
+</div>
+<div id="loading-and-attaching-a-package-namespace" class="section level3" number="2.1.4">
+<h3 number="2.1.4"><span class="header-section-number">2.1.4</span> Loading and Attaching a Package Namespace</h3>
+</div>
+<div id="the-r-sub-directory" class="section level3" number="2.1.5">
+<h3 number="2.1.5"><span class="header-section-number">2.1.5</span> The R Sub-directory</h3>
+</div>
+<div id="the-man-sub-directory" class="section level3" number="2.1.6">
+<h3 number="2.1.6"><span class="header-section-number">2.1.6</span> The man Sub-directory</h3>
+</div>
+<div id="summary" class="section level3" number="2.1.7">
+<h3 number="2.1.7"><span class="header-section-number">2.1.7</span> Summary</h3>
+<!--chapter:end:01-intro.Rmd-->
+</div>
+</div>
+</div>
+<div id="r-package" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> R package</h1>
+<p>Placeholder</p>
+<div id="package-development" class="section level2" number="3.1">
+<h2 number="3.1"><span class="header-section-number">3.1</span> Package Development</h2>
+<!--chapter:end:02-literature.Rmd-->
+</div>
+</div>
+<div id="functions" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Functions</h1>
+<p>Placeholder</p>
+<div id="document" class="section level2" number="4.1">
+<h2 number="4.1"><span class="header-section-number">4.1</span> Document</h2>
+</div>
+<div id="dependencies" class="section level2" number="4.2">
+<h2 number="4.2"><span class="header-section-number">4.2</span> Dependencies</h2>
+</div>
+<div id="special-case" class="section level2" number="4.3">
+<h2 number="4.3"><span class="header-section-number">4.3</span> Special Case</h2>
+<!--chapter:end:03-method.Rmd-->
+</div>
+</div>
+<div id="installing-the-package" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Installing the package</h1>
+<p>Placeholder</p>
+<!--chapter:end:04-application.Rmd-->
+</div>
+<div id="final-words" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> Final Words</h1>
+<p>R packages provide a convenient and standardized mechanism for distributing R code to a wide audience. As part of building an R package you design an interface to a collection of functions that users can access to make use of the functionality you provide. R packages are directories containing R code, documentation files, package metadata, and export/import information. Exported functions are functions that are accessible by the user; imported functions are functions in other packages that are used by your package.</p>
+<p>We just scratch the surface on how one can start developing R packages. I hope you feel empowered to start developing your own packages now! We went through many of these steps one time only; however, in the development process, some of these steps are iterative. Table @ref(tab:tab51) highlight key steps we went together and it can be used as reference material when you get entangled along the stage, then table @ref(tab:tab51) can resourceful.</p>
+<table>
+<caption>
+(#tab:tab51)Key functions in sequantial order during package developmnent
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+SN
+</th>
+<th style="text-align:left;">
+Step
+</th>
+<th style="text-align:left;">
+tools
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Load development packages
+</td>
+<td style="text-align:left;">
+library(usethis), library(devtools)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Create new package
+</td>
+<td style="text-align:left;">
+usethis::create_package(“path/package”)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Optional: Connect to GitHub repo
+</td>
+<td style="text-align:left;">
+usethis::use_git(), usethis::use_github()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Add license
+</td>
+<td style="text-align:left;">
+usethis::use_mit_license(“Your name”)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Create new function
+</td>
+<td style="text-align:left;">
+usethis::use_r(“function”)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Test drive function
+</td>
+<td style="text-align:left;">
+devtools::load_all()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Insert Roxygen skeleton
+</td>
+<td style="text-align:left;">
+Menu -&gt; Code -&gt; Insert Roxygen Skeleton
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Document package
+</td>
+<td style="text-align:left;">
+devtools::document()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Specify package dependencies
+</td>
+<td style="text-align:left;">
+usethis::use_package(“package”)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Specify functions within packages
+</td>
+<td style="text-align:left;">
+package::function
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Document package
+</td>
+<td style="text-align:left;">
+devtools::document()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Install package
+</td>
+<td style="text-align:left;">
+devtools::install(“path/package”), or
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+devtools::install_github(“user/repo”)
+</td>
+</tr>
+</tbody>
+</table>
+<!--chapter:end:05-summary.Rmd-->
+</div>
+<div id="references" class="section level1 unnumbered" number="">
+<h1 class="unnumbered" number="">References</h1>
+<!--chapter:end:06-references.Rmd-->
+</div>
+<!--bookdown:body:end-->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+    </div>
+  </div>
+<!--bookdown:config-->
+
+</body>
+
+</html>

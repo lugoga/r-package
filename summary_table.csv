@@ -1,0 +1,18 @@
+SN,Step,tools
+1, Load development packages,"library(usethis), library(devtools)"
+2, Create new package,usethis::create_package("path/package")
+3, Optional: Connect to GitHub repo,"usethis::use_git(), usethis::use_github()"
+4, Check build,devtools::check()
+5, Add license,usethis::use_mit_license("Your name")
+6, Check build,devtools::check()
+7, Create new function,usethis::use_r("function")
+8, Test drive function,devtools::load_all()
+9, Insert Roxygen skeleton,Menu -> Code -> Insert Roxygen Skeleton
+10, Document package,devtools::document()
+11, Check build,devtools::check()
+12, Specify package dependencies,usethis::use_package("package")
+13, Specify functions within packages,package::function
+14, Document package,devtools::document()
+15, Check build,devtools::check()
+16, Install package,"devtools::install(""path/package""), or"
+,,devtools::install_github("user/repo")

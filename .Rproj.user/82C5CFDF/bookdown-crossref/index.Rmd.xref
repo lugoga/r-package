@@ -1,0 +1,6 @@
+h1:cover-image-graphicscover cover-image: graphics/cover
+h1:favicon-graphicsfavicon.ico favicon: graphics/favicon.ico
+h1:welcome-note Welcome Note
+h2:colophon Colophon
+h2:license License
+

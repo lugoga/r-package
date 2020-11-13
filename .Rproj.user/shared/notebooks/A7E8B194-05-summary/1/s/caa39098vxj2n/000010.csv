@@ -1,0 +1,11 @@
+"0","readr::read_csv(""summary_table.csv"") %>% knitr::kable(caption = )
+"
+"2","
+[36m--[39m [1m[1mColumn specification[1m[22m [36m------------------------------------------------------------[39m
+cols(
+  SN = [32mcol_double()[39m,
+  Step = [31mcol_character()[39m,
+  tools = [31mcol_character()[39m
+)
+
+"
