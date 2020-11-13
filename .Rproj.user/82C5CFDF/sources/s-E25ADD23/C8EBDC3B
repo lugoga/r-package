@@ -1,9 +1,9 @@
 {
     "id": "C8EBDC3B",
-    "path": "E:/bookdown/r-package/03-method.Rmd",
-    "project_path": "03-method.Rmd",
+    "path": "E:/bookdown/r-package/03-functions.Rmd",
+    "project_path": "03-functions.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "3180438558",
     "contents": "",
     "dirty": false,
     "created": 1605241848702.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "99,0",
-        "scrollLine": "0",
+        "cursorPosition": "66,66",
+        "scrollLine": "60",
         "last_setup_crc32": ""
     },
     "folds": "",
@@ -21,7 +21,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1605287367743,
+    "last_content_update": 1605287367,
     "read_only": false,
     "read_only_alternatives": []
 }

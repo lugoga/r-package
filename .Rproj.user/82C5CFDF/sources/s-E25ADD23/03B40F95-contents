@@ -1,4 +1,6 @@
+
 # Installing the package
+
 Once you have finished devloping the package, you can run `devtools::document()` to submit the package and then `devtools::check()` to assess of any error in the package. Once the signs are green, you have an error free package and you ready to install it in your machine or share with other colleagues to install into their machine. However, you need to bundle the folder you have been working to develop the package. 
 
 **devtools** has a a function `build()` which was designed specifically for that purpose. `build()` function converts a package source directory into a single bundled file. If binary = FALSE this creates a tar.gz package that can be installed on any platform, provided they have a full development environment (although packages without source code can typically be installed out of the box). If `binary = TRUE`, the package will have a platform specific extension (e.g. .zip for windows), and will only be installable on the current platform, but no development environment is needed.

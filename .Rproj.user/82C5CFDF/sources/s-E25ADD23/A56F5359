@@ -1,9 +1,9 @@
 {
     "id": "A56F5359",
-    "path": "E:/bookdown/r-package/02-literature.Rmd",
-    "project_path": "02-literature.Rmd",
+    "path": "E:/bookdown/r-package/02-package.Rmd",
+    "project_path": "02-package.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "1142823553",
     "contents": "",
     "dirty": false,
     "created": 1605241847385.0,
@@ -21,7 +21,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1605285402423,
+    "last_content_update": 1605285402,
     "read_only": false,
     "read_only_alternatives": []
 }
