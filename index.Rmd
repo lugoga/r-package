@@ -95,15 +95,15 @@ knitr::write_bib(c(
 For attribution, please cite this work as
 
 ```{r, eval=FALSE}
-Semba M (2020). Developing packages in R. Retrieve from "https://lugoga.github.io/babye/"
+Semba M (2020). Developing packages in R. Retrieve from "https://lugoga.github.io/r-package/"
 ```
 
 BibTex format
 ```{r, eval=FALSE}
 @misc{semba2020p,
     author = {Masumbuko, Semba},
-    title = {babye: a package to access and dowload satellite data},
-    ur = {https://lugoga.github.io/babye/},
+    title = {Developing packages in R},
+    ur = {https://lugoga.github.io/r-package/},
     year = {2020}
 }
 ```

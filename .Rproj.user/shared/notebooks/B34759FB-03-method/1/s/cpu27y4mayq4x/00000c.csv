@@ -1,4 +1,0 @@
-"0","max_min(x = iris$Species)"
-"2","Error in max_min(x = iris$Species) : 
-  i am sorry, I can work with a factor variable you provided, Please supply me with numeric vector variable
-"

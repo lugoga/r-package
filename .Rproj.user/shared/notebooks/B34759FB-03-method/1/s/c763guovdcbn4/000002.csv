@@ -1,5 +1,0 @@
-"0","max_min(x = iris$Species)
-"
-"2","Error in Summary.factor(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,  : 
-  ‘max’ not meaningful for factors
-"
