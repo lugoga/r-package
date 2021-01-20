@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 use that data! | Bundle your codes in Package</title>
+  <meta name="description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 use that data! | Bundle your codes in Package" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="lugoga.github.com" />
+  
+  <meta property="og:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 use that data! | Bundle your codes in Package" />
+  
+  <meta name="twitter:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
+  
+
+<meta name="author" content="Masumbuko Semba" />
+<meta name="author" content="Nyamisi Peter" />
+<meta name="author" content="Ismael Kimirei" />
+
+
+<meta name="date" content="2021-01-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="change-votes-to-factor-and-self-descriptive.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Simply and value your R session with packages</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome Note</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#colophon"><i class="fa fa-check"></i>Colophon</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#basic-structure-of-an-r-package"><i class="fa fa-check"></i><b>1.1</b> Basic Structure of an R Package</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#description-file"><i class="fa fa-check"></i><b>1.1.1</b> DESCRIPTION File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#namespace-file"><i class="fa fa-check"></i><b>1.1.2</b> NAMESPACE File</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#namespace-function-notation"><i class="fa fa-check"></i><b>1.1.3</b> Namespace Function Notation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="introduction.html"><a href="introduction.html#loading-and-attaching-a-package-namespace"><i class="fa fa-check"></i><b>1.1.4</b> Loading and Attaching a Package Namespace</a></li>
+<li class="chapter" data-level="1.1.5" data-path="introduction.html"><a href="introduction.html#the-r-sub-directory"><i class="fa fa-check"></i><b>1.1.5</b> The R Sub-directory</a></li>
+<li class="chapter" data-level="1.1.6" data-path="introduction.html"><a href="introduction.html#the-man-sub-directory"><i class="fa fa-check"></i><b>1.1.6</b> The man Sub-directory</a></li>
+<li class="chapter" data-level="1.1.7" data-path="introduction.html"><a href="introduction.html#summary"><i class="fa fa-check"></i><b>1.1.7</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-package.html"><a href="r-package.html"><i class="fa fa-check"></i><b>2</b> R package</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-package.html"><a href="r-package.html#package-development"><i class="fa fa-check"></i><b>2.1</b> Package Development</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="functions.html"><a href="functions.html#document"><i class="fa fa-check"></i><b>3.1</b> Document</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#dependencies"><i class="fa fa-check"></i><b>3.2</b> Dependencies</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#special-case"><i class="fa fa-check"></i><b>3.3</b> Special Case</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="installing-the-package.html"><a href="installing-the-package.html"><i class="fa fa-check"></i><b>4</b> Installing the package</a></li>
+<li class="chapter" data-level="5" data-path="final.html"><a href="final.html"><i class="fa fa-check"></i><b>5</b> Final</a></li>
+<li class="chapter" data-level="6" data-path="building-a-data-package.html"><a href="building-a-data-package.html"><i class="fa fa-check"></i><b>6</b> Building a Data Package</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="building-a-data-package.html"><a href="building-a-data-package.html#install-devtools-package-in-r"><i class="fa fa-check"></i><b>6.1</b> Install ‘devtools’ package in R</a></li>
+<li class="chapter" data-level="6.2" data-path="building-a-data-package.html"><a href="building-a-data-package.html#create-a-new-package"><i class="fa fa-check"></i><b>6.2</b> Create a new package</a></li>
+<li class="chapter" data-level="6.3" data-path="building-a-data-package.html"><a href="building-a-data-package.html#edit-description-file"><i class="fa fa-check"></i><b>6.3</b> Edit DESCRIPTION file</a></li>
+<li class="chapter" data-level="6.4" data-path="building-a-data-package.html"><a href="building-a-data-package.html#add-your-data"><i class="fa fa-check"></i><b>6.4</b> Add your data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="load-data.html"><a href="load-data.html"><i class="fa fa-check"></i><b>7</b> load data</a></li>
+<li class="chapter" data-level="8" data-path="extract-only-selected-columns.html"><a href="extract-only-selected-columns.html"><i class="fa fa-check"></i><b>8</b> extract only selected columns</a></li>
+<li class="chapter" data-level="9" data-path="rename-columns.html"><a href="rename-columns.html"><i class="fa fa-check"></i><b>9</b> rename columns</a></li>
+<li class="chapter" data-level="10" data-path="change-votes-to-factor-and-self-descriptive.html"><a href="change-votes-to-factor-and-self-descriptive.html"><i class="fa fa-check"></i><b>10</b> change votes to factor and self-descriptive</a></li>
+<li class="chapter" data-level="11" data-path="use-that-data.html"><a href="use-that-data.html"><i class="fa fa-check"></i><b>11</b> use that data!</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="use-that-data.html"><a href="use-that-data.html#document-your-dataset"><i class="fa fa-check"></i><b>11.1</b> Document your dataset</a></li>
+<li class="chapter" data-level="11.2" data-path="use-that-data.html"><a href="use-that-data.html#generate-documentation-files"><i class="fa fa-check"></i><b>11.2</b> Generate documentation files</a></li>
+<li class="chapter" data-level="11.3" data-path="use-that-data.html"><a href="use-that-data.html#congratulations"><i class="fa fa-check"></i><b>11.3</b> Congratulations!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bundle your codes in Package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="use-that-data" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> use that data!</h1>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="use-that-data.html#cb28-1"></a>usethis<span class="op">::</span><span class="kw">use_data</span>(votes, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p>After editing the file, it is necessary to run this code immediately! Run it either by selecting it in R GUI and pressing Ctrl+R, or in RStudio by clicking on “Run” button. When you run your code, R will process the data and save a new dataset to the data folder.</p>
+<div id="document-your-dataset" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Document your dataset</h2>
+<p>We have our data-raw folder ready - it reproducibly creates the dataset. The dataset is available in the data folder. So, now we only need to document that!</p>
+<p>Run:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="use-that-data.html#cb29-1"></a>usethis<span class="op">::</span><span class="kw">use_package_doc</span>()</span></code></pre></div>
+<p>in your R console and R will open a documentation file in R folder for your package.</p>
+<p>You can use roxygen2 block for your documentation, see <a href="https://r-pkgs.org/data.html#documenting-data" class="uri">https://r-pkgs.org/data.html#documenting-data</a>.</p>
+<p>My R/v0te-package.R file looks like this:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="use-that-data.html#cb30-1"></a><span class="co">#&#39; @keywords internal</span></span>
+<span id="cb30-2"><a href="use-that-data.html#cb30-2"></a><span class="st">&quot;_PACKAGE&quot;</span></span>
+<span id="cb30-3"><a href="use-that-data.html#cb30-3"></a></span>
+<span id="cb30-4"><a href="use-that-data.html#cb30-4"></a><span class="co"># The following block is used by usethis to automatically manage</span></span>
+<span id="cb30-5"><a href="use-that-data.html#cb30-5"></a><span class="co"># roxygen namespace tags. Modify with care!</span></span>
+<span id="cb30-6"><a href="use-that-data.html#cb30-6"></a><span class="co">## usethis namespace: start</span></span>
+<span id="cb30-7"><a href="use-that-data.html#cb30-7"></a><span class="co">## usethis namespace: end</span></span>
+<span id="cb30-8"><a href="use-that-data.html#cb30-8"></a><span class="ot">NULL</span></span>
+<span id="cb30-9"><a href="use-that-data.html#cb30-9"></a></span>
+<span id="cb30-10"><a href="use-that-data.html#cb30-10"></a><span class="co">#&#39; United Nations General Assembly Voting Data</span></span>
+<span id="cb30-11"><a href="use-that-data.html#cb30-11"></a><span class="co">#&#39;</span></span>
+<span id="cb30-12"><a href="use-that-data.html#cb30-12"></a><span class="co">#&#39; This is a dataset of roll-call votes in the UN General Assembly from 1946.</span></span>
+<span id="cb30-13"><a href="use-that-data.html#cb30-13"></a><span class="co">#&#39;</span></span>
+<span id="cb30-14"><a href="use-that-data.html#cb30-14"></a><span class="co">#&#39; @format A data frame with 4 variables:</span></span>
+<span id="cb30-15"><a href="use-that-data.html#cb30-15"></a><span class="co">#&#39; \describe{</span></span>
+<span id="cb30-16"><a href="use-that-data.html#cb30-16"></a><span class="co">#&#39;   \item{resid}{roll-call vote id}</span></span>
+<span id="cb30-17"><a href="use-that-data.html#cb30-17"></a><span class="co">#&#39;   \item{year}{year of vote}</span></span>
+<span id="cb30-18"><a href="use-that-data.html#cb30-18"></a><span class="co">#&#39;   \item{country}{country name}</span></span>
+<span id="cb30-19"><a href="use-that-data.html#cb30-19"></a><span class="co">#&#39;   \item{vote}{yes/no/abstain/absent/not a member}</span></span>
+<span id="cb30-20"><a href="use-that-data.html#cb30-20"></a><span class="co">#&#39; }</span></span>
+<span id="cb30-21"><a href="use-that-data.html#cb30-21"></a><span class="co">#&#39; @source \url{https://doi.org/10.7910/DVN/LEJUQZ}</span></span>
+<span id="cb30-22"><a href="use-that-data.html#cb30-22"></a><span class="st">&quot;votes&quot;</span></span></code></pre></div>
+<p>The first two blocks were generated automatically, and I don’t touch that. The third block is written by me and contains basic info about the dataset.</p>
+</div>
+<div id="generate-documentation-files" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Generate documentation files</h2>
+<p>If you have your documentation ready, run:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="use-that-data.html#cb31-1"></a>devtools<span class="op">::</span><span class="kw">document</span>()</span></code></pre></div>
+<p>This will generate documentation files for your package inside the man folder.</p>
+</div>
+<div id="congratulations" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Congratulations!</h2>
+<p>Your package is probably ready to use. Please, consider to add some permissive license, e.g. MIT:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="use-that-data.html#cb32-1"></a>usethis<span class="op">::</span><span class="kw">use_mit_license</span>(<span class="st">&quot;Your Name&quot;</span>)</span></code></pre></div>
+<p>And now you can test your package with:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="use-that-data.html#cb33-1"></a>devtools<span class="op">::</span><span class="kw">load_all</span>()</span></code></pre></div>
+<p>You’ll see that you can use a new votes dataset and do some data science on that. :-)</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="use-that-data.html#cb34-1"></a><span class="kw">str</span>(votes)</span></code></pre></div>
+<p>Lastly, check your package:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="use-that-data.html#cb35-1"></a>devtools<span class="op">::</span><span class="kw">check</span>()</span></code></pre></div>
+<p>If everything looks good, just upload your package to some git hosting site.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="change-votes-to-factor-and-self-descriptive.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["r-package.pdf", "r-package.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
