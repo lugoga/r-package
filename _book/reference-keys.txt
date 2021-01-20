@@ -27,3 +27,16 @@ dependencies
 special-case
 installing-the-package
 final
+building-a-data-package
+install-devtools-package-in-r
+create-a-new-package
+edit-description-file
+add-your-data
+load-data
+extract-only-selected-columns
+rename-columns
+change-votes-to-factor-and-self-descriptive
+use-that-data
+document-your-dataset
+generate-documentation-files
+congratulations

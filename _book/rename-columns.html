@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Functions | Bundle your codes in Package</title>
+  <title>Chapter 9 rename columns | Bundle your codes in Package</title>
   <meta name="description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Functions | Bundle your codes in Package" />
+  <meta property="og:title" content="Chapter 9 rename columns | Bundle your codes in Package" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="lugoga.github.com" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Functions | Bundle your codes in Package" />
+  <meta name="twitter:title" content="Chapter 9 rename columns | Bundle your codes in Package" />
   
   <meta name="twitter:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-package.html"/>
-<link rel="next" href="installing-the-package.html"/>
+<link rel="prev" href="extract-only-selected-columns.html"/>
+<link rel="next" href="change-votes-to-factor-and-self-descriptive.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -167,6 +167,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="installing-the-package.html"><a href="installing-the-package.html"><i class="fa fa-check"></i><b>4</b> Installing the package</a></li>
 <li class="chapter" data-level="5" data-path="final.html"><a href="final.html"><i class="fa fa-check"></i><b>5</b> Final</a></li>
+<li class="chapter" data-level="6" data-path="building-a-data-package.html"><a href="building-a-data-package.html"><i class="fa fa-check"></i><b>6</b> Building a Data Package</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="building-a-data-package.html"><a href="building-a-data-package.html#install-devtools-package-in-r"><i class="fa fa-check"></i><b>6.1</b> Install ‘devtools’ package in R</a></li>
+<li class="chapter" data-level="6.2" data-path="building-a-data-package.html"><a href="building-a-data-package.html#create-a-new-package"><i class="fa fa-check"></i><b>6.2</b> Create a new package</a></li>
+<li class="chapter" data-level="6.3" data-path="building-a-data-package.html"><a href="building-a-data-package.html#edit-description-file"><i class="fa fa-check"></i><b>6.3</b> Edit DESCRIPTION file</a></li>
+<li class="chapter" data-level="6.4" data-path="building-a-data-package.html"><a href="building-a-data-package.html#add-your-data"><i class="fa fa-check"></i><b>6.4</b> Add your data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="load-data.html"><a href="load-data.html"><i class="fa fa-check"></i><b>7</b> load data</a></li>
+<li class="chapter" data-level="8" data-path="extract-only-selected-columns.html"><a href="extract-only-selected-columns.html"><i class="fa fa-check"></i><b>8</b> extract only selected columns</a></li>
+<li class="chapter" data-level="9" data-path="rename-columns.html"><a href="rename-columns.html"><i class="fa fa-check"></i><b>9</b> rename columns</a></li>
+<li class="chapter" data-level="10" data-path="change-votes-to-factor-and-self-descriptive.html"><a href="change-votes-to-factor-and-self-descriptive.html"><i class="fa fa-check"></i><b>10</b> change votes to factor and self-descriptive</a></li>
+<li class="chapter" data-level="11" data-path="use-that-data.html"><a href="use-that-data.html"><i class="fa fa-check"></i><b>11</b> use that data!</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="use-that-data.html"><a href="use-that-data.html#document-your-dataset"><i class="fa fa-check"></i><b>11.1</b> Document your dataset</a></li>
+<li class="chapter" data-level="11.2" data-path="use-that-data.html"><a href="use-that-data.html#generate-documentation-files"><i class="fa fa-check"></i><b>11.2</b> Generate documentation files</a></li>
+<li class="chapter" data-level="11.3" data-path="use-that-data.html"><a href="use-that-data.html#congratulations"><i class="fa fa-check"></i><b>11.3</b> Congratulations!</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -188,100 +205,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Functions</h1>
-<p>As mentioned in previous chapter, R packages bundles functions so that are ready and easy available for users. That tells us that the core ingredients of R packages are functions. R packages contains several functions that together make a packages that is aimed to facilitate data import, manipulation and plotting within R environment <span class="citation">(R Core Team <a href="#ref-R-base" role="doc-biblioref">2020</a>)</span>. Therefore, in this chapter we are going to learn how to make a simple function that work. We are not going to load with you with creating many functions, but we understand that once you master the basic of creating your own function, it will be easy to make more function that are intended to solve a particular data science probem.</p>
-<p>We create a function and assign it a name <code>max_min</code>. This function aim to find the difference of numeric values in a vector.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="functions.html#cb7-1"></a>max_min &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb7-2"><a href="functions.html#cb7-2"></a>  <span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</span>
-<span id="cb7-3"><a href="functions.html#cb7-3"></a>}</span></code></pre></div>
-<p>Let’s check whether the function work using the famous iris dataset. We only check the difference of variable <code>Sepal.Length</code></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="functions.html#cb8-1"></a><span class="kw">max_min</span>(<span class="dt">x =</span> iris<span class="op">$</span>Sepal.Length)</span></code></pre></div>
-<pre><code>## [1] 3.6</code></pre>
-<p>That work, what if we use a <code>Species</code> variable</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="functions.html#cb10-1"></a><span class="kw">max_min</span>(<span class="dt">x =</span> iris<span class="op">$</span>Species)</span></code></pre></div>
-<p>We get an error, but the message isn’t descriptive. That is common. For us to make descriptive notification when a wrong type of data is provided, we need to add the <code>if-stop</code> function to validity the arguments that are required in the function. We recreate the function and additional arguments to check the validity of the arguments.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="functions.html#cb11-1"></a>max_min &lt;-<span class="st"> </span><span class="cf">function</span>(x){</span>
-<span id="cb11-2"><a href="functions.html#cb11-2"></a>  </span>
-<span id="cb11-3"><a href="functions.html#cb11-3"></a>    <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.numeric</span>(x)){</span>
-<span id="cb11-4"><a href="functions.html#cb11-4"></a>      <span class="kw">stop</span>(<span class="st">&quot;i am sorry, I can work with a &quot;</span>, <span class="kw">class</span>(x)[<span class="dv">1</span>], <span class="st">&quot; variable you provided, Please supply me with numeric vector variable&quot;</span>)</span>
-<span id="cb11-5"><a href="functions.html#cb11-5"></a>    }</span>
-<span id="cb11-6"><a href="functions.html#cb11-6"></a>  </span>
-<span id="cb11-7"><a href="functions.html#cb11-7"></a>  <span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</span>
-<span id="cb11-8"><a href="functions.html#cb11-8"></a>  </span>
-<span id="cb11-9"><a href="functions.html#cb11-9"></a>}</span></code></pre></div>
-<p>Let’s check again the variables species in our functions.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="functions.html#cb12-1"></a><span class="kw">max_min</span>(<span class="dt">x =</span> iris<span class="op">$</span>Species)</span></code></pre></div>
-<p>Woolah! now we get a descriptive error notification, what if we supply the numeric variable to the function!</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="functions.html#cb13-1"></a><span class="kw">max_min</span>(iris<span class="op">$</span>Sepal.Width)</span></code></pre></div>
-<pre><code>## [1] 2.4</code></pre>
-<p>Let us add our first function <code>max_min</code> to <strong>babye</strong> package using <code>usethis::use_r("max_min"). This creates a black R script named</code>max_min.R<code>located in the</code>R/` sub-folder in our package directory. It is recommended that the R script and the function bear the same name. Then fill the R script of R function we created with the argument as shown in figure <a href="functions.html#fig:fig31">3.1</a>.</p>
-<div class="figure"><span id="fig:fig31"></span>
-<img src="img/first_function.png" alt="Function script" width="100%" />
-<p class="caption">
-Figure 3.1: Function script
-</p>
-</div>
-<p>Once you have created the function, take your function for a test drive with <code>devtools::load_all (“arguably the most important part of the devtools workflow”)</code>. <code>devtools::load_all()</code> places your function in local memory so that you may tinker and confirm its execution. Let’s give it a try.</p>
-<div id="document" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Document</h2>
-<p>Next document the <code>max_min</code> function using the Roxygen skeleton. The roxygen2 package provides an in-source documentation system that automatically generates R documentation (Rd) files. First, place your cursor in the function definition, and then you can add the skeleton from <code>code &gt; insert Roxygen skeleton</code> in the Rstudio main tab (see figure <a href="functions.html#fig:fig32">3.2</a>).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="functions.html#cb15-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;img/roxygen_skeleton.png&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:fig32"></span>
-<img src="img/roxygen_skeleton.png" alt="Inserting function documentation in Rstuido" width="100%" />
-<p class="caption">
-Figure 3.2: Inserting function documentation in Rstuido
-</p>
-</div>
-<p>You will get skeleton of documentation for the function, you can fill the field and updates it as you wish. This document the function and briefly describe it, which make it easy for you and user later that help instruct how to use the function. I have updated the <code>max_min</code> function as seen in figure <a href="functions.html#fig:fig33">3.3</a></p>
-<div class="figure"><span id="fig:fig33"></span>
-<img src="img/first_function_description.png" alt="documented function" width="100%" />
-<p class="caption">
-Figure 3.3: documented function
-</p>
-</div>
-<p>Once you have update the function document, save it and submit using the <code>devtools::document</code> function.</p>
-</div>
-<div id="dependencies" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Dependencies</h2>
-<p>It’s the job of the DESCRIPTION to list the packages that your package needs to work. To specify a package dependency, the name of the package needs to be listed in the DESCRIPTION file. This can be automatically done for you by submitting.</p>
-<div class="figure"><span id="fig:fig34"></span>
-<img src="img/package_dependency.png" alt="Package dependency" width="100%" />
-<p class="caption">
-Figure 3.4: Package dependency
-</p>
-</div>
-<p>We notice that our package to work with pipe operator, it requires a <strong>magritrr</strong> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-magritrr"><strong>???</strong></span>)</span>. That means when you install this package, it will also install the packages it depends like <strong>magritrr</strong>.</p>
-<div class="figure"><span id="fig:fig35"></span>
-<img src="img/package_dependency_description.png" alt="Package dependency" width="100%" />
-<p class="caption">
-Figure 3.5: Package dependency
-</p>
-</div>
-</div>
-<div id="special-case" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Special Case</h2>
-<p>Although we have imported a <strong>magritrr</strong> package, this package has special operator called pipe or then denoted as <code>%&gt;%</code>, which provide a convenient way to chain the processes in R. We can add this special function in two steps</p>
-<ul>
-<li><code>usethis::use_pipe()</code>—which creates <code>utils-pipe.R</code> folder and adds <code>magritrr</code> to imports in the DESCRIPTION file.</li>
-<li><code>devtools::document()</code>—add the pipe in our package NAMESPACE file.</li>
-</ul>
-
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-base">
-<p>R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
-</div>
+<div id="rename-columns" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> rename columns</h1>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="rename-columns.html#cb26-1"></a><span class="kw">colnames</span>(votes) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;resid&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;vote&quot;</span>)</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="r-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="installing-the-package.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="extract-only-selected-columns.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="change-votes-to-factor-and-self-descriptive.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

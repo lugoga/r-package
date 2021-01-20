@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Final | Bundle your codes in Package</title>
+  <title>Chapter 7 load data | Bundle your codes in Package</title>
   <meta name="description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Final | Bundle your codes in Package" />
+  <meta property="og:title" content="Chapter 7 load data | Bundle your codes in Package" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="lugoga.github.com" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Final | Bundle your codes in Package" />
+  <meta name="twitter:title" content="Chapter 7 load data | Bundle your codes in Package" />
   
   <meta name="twitter:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="installing-the-package.html"/>
-<link rel="next" href="references.html"/>
+<link rel="prev" href="building-a-data-package.html"/>
+<link rel="next" href="extract-only-selected-columns.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -167,6 +167,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="installing-the-package.html"><a href="installing-the-package.html"><i class="fa fa-check"></i><b>4</b> Installing the package</a></li>
 <li class="chapter" data-level="5" data-path="final.html"><a href="final.html"><i class="fa fa-check"></i><b>5</b> Final</a></li>
+<li class="chapter" data-level="6" data-path="building-a-data-package.html"><a href="building-a-data-package.html"><i class="fa fa-check"></i><b>6</b> Building a Data Package</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="building-a-data-package.html"><a href="building-a-data-package.html#install-devtools-package-in-r"><i class="fa fa-check"></i><b>6.1</b> Install ‘devtools’ package in R</a></li>
+<li class="chapter" data-level="6.2" data-path="building-a-data-package.html"><a href="building-a-data-package.html#create-a-new-package"><i class="fa fa-check"></i><b>6.2</b> Create a new package</a></li>
+<li class="chapter" data-level="6.3" data-path="building-a-data-package.html"><a href="building-a-data-package.html#edit-description-file"><i class="fa fa-check"></i><b>6.3</b> Edit DESCRIPTION file</a></li>
+<li class="chapter" data-level="6.4" data-path="building-a-data-package.html"><a href="building-a-data-package.html#add-your-data"><i class="fa fa-check"></i><b>6.4</b> Add your data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="load-data.html"><a href="load-data.html"><i class="fa fa-check"></i><b>7</b> load data</a></li>
+<li class="chapter" data-level="8" data-path="extract-only-selected-columns.html"><a href="extract-only-selected-columns.html"><i class="fa fa-check"></i><b>8</b> extract only selected columns</a></li>
+<li class="chapter" data-level="9" data-path="rename-columns.html"><a href="rename-columns.html"><i class="fa fa-check"></i><b>9</b> rename columns</a></li>
+<li class="chapter" data-level="10" data-path="change-votes-to-factor-and-self-descriptive.html"><a href="change-votes-to-factor-and-self-descriptive.html"><i class="fa fa-check"></i><b>10</b> change votes to factor and self-descriptive</a></li>
+<li class="chapter" data-level="11" data-path="use-that-data.html"><a href="use-that-data.html"><i class="fa fa-check"></i><b>11</b> use that data!</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="use-that-data.html"><a href="use-that-data.html#document-your-dataset"><i class="fa fa-check"></i><b>11.1</b> Document your dataset</a></li>
+<li class="chapter" data-level="11.2" data-path="use-that-data.html"><a href="use-that-data.html#generate-documentation-files"><i class="fa fa-check"></i><b>11.2</b> Generate documentation files</a></li>
+<li class="chapter" data-level="11.3" data-path="use-that-data.html"><a href="use-that-data.html#congratulations"><i class="fa fa-check"></i><b>11.3</b> Congratulations!</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -188,226 +205,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="final" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Final</h1>
-<p>R packages provide a convenient and standardized mechanism for distributing R code to a wide audience. As part of building an R package you design an interface to a collection of functions that users can access to make use of the functionality you provide. R packages are directories containing R code, documentation files, package metadata, and export/import information. Exported functions are functions that are accessible by the user; imported functions are functions in other packages that are used by your package.</p>
-<p>We just scratch the surface on how one can start developing R packages. I hope you feel empowered to start developing your own packages now! We went through many of these steps one time only; however, in the development process, some of these steps are iterative. Table <a href="final.html#tab:tab51">5.1</a> highlight key steps we went together and it can be used as reference material when you get entangled along the stage, then table <a href="final.html#tab:tab51">5.1</a> can resourceful.</p>
-<table>
-<caption>
-<span id="tab:tab51">Table 5.1: </span>Key functions in sequantial order during package developmnent
-</caption>
-<thead>
-<tr>
-<th style="text-align:right;">
-SN
-</th>
-<th style="text-align:left;">
-Step
-</th>
-<th style="text-align:left;">
-tools
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Load development packages
-</td>
-<td style="text-align:left;">
-library(usethis), library(devtools)
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Create new package
-</td>
-<td style="text-align:left;">
-usethis::create_package(“path/package”)
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Optional: Connect to GitHub repo
-</td>
-<td style="text-align:left;">
-usethis::use_git(), usethis::use_github()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-Check build
-</td>
-<td style="text-align:left;">
-devtools::check()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-Add license
-</td>
-<td style="text-align:left;">
-usethis::use_mit_license(“Your name”)
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-Check build
-</td>
-<td style="text-align:left;">
-devtools::check()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-Create new function
-</td>
-<td style="text-align:left;">
-usethis::use_r(“function”)
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-Test drive function
-</td>
-<td style="text-align:left;">
-devtools::load_all()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:left;">
-Insert Roxygen skeleton
-</td>
-<td style="text-align:left;">
-Menu -&gt; Code -&gt; Insert Roxygen Skeleton
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-Document package
-</td>
-<td style="text-align:left;">
-devtools::document()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:left;">
-Check build
-</td>
-<td style="text-align:left;">
-devtools::check()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:left;">
-Specify package dependencies
-</td>
-<td style="text-align:left;">
-usethis::use_package(“package”)
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:left;">
-Specify functions within packages
-</td>
-<td style="text-align:left;">
-package::function
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:left;">
-Document package
-</td>
-<td style="text-align:left;">
-devtools::document()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Check build
-</td>
-<td style="text-align:left;">
-devtools::check()
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:left;">
-Install package
-</td>
-<td style="text-align:left;">
-devtools::install(“path/package”), or
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-devtools::install_github(“user/repo”)
-</td>
-</tr>
-</tbody>
-</table>
-
+<div id="load-data" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> load data</h1>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="load-data.html#cb24-1"></a><span class="kw">load</span>(<span class="kw">url</span>(<span class="st">&quot;https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/LEJUQZ/MLNAHB&quot;</span>))</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="installing-the-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="building-a-data-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="extract-only-selected-columns.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

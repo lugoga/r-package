@@ -1,0 +1,184 @@
+
+# Building a Data Package
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE)
+```
+
+In data science, it’s vital to have some useful data available. But it’s much better to have this data ready in a reproducible way and provide it in a simple data R package, so that your team can start using it right away.
+
+Let’s make an example R data package in seven simple steps!
+
+##  Install ‘devtools’ package in R
+First, we need to install the {devtools} package. Start a new R session (or RStudio) and run:
+
+```{r}
+install.packages("devtools")
+```
+
+It comes along with package {usethis} and some handy and helper functions that will ease the creation of a new R package for you.
+
+## Create a new package
+Now it’s time to create a backbone of our new R package. This step is pretty straightforward, just run:
+
+```{r}
+usethis::create_package("v0te")
+```
+
+
+My package will be named “v0te” and will contain United Nations General Assembly Voting Data from the Harvard Dataverse.1
+
+This command will create a new folder in your home directory prepopulated with some files for further adjustment.
+
+## Edit DESCRIPTION file
+The DESCRIPTION file contains some essential metadata about your package. It is already prefilled with few lines, so open it and fill in your name and a package description. For example:
+
+```{r, eval=FALSE}
+Package: v0te
+Title: United Nations General Assembly Voting Data
+Version: 0.0.0.9000
+Authors@R:
+    person(given = "Petr",
+           family = "Kajzar",
+           role = c("aut", "cre"),
+           email = "author@example.org")
+Description: The package contains UN General Assembly Voting Data. It is a
+    dataset of roll-call votes in the UN General Assembly from 1946.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends:
+    R (>= 2.10)
+    
+```    
+
+
+## Add your data
+OK, we have metadata prepared, now we’ll add some real data. We now need to create a data directory to store the data for this package. First we will create a directory to store our scripts that will collect and process our raw data. In your R concole, type:
+
+```{r, eval=FALSE}
+usethis::use_data_raw("v0te")
+```
+
+
+This will create a data-raw folder with v0te.R file. Open that (if it’s not already open) and edit.
+
+In my case, I will load remote data, edit that and save to data folder easily with usethis::use_data() function.
+
+My data-raw/v0te.R file looks like this:
+
+## load data
+```{r, eval=FALSE}
+load(url("https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/LEJUQZ/MLNAHB"))
+```
+
+
+
+## extract only selected columns
+```{r, eval=FALSE}
+votes <- subset(completeVotes, select = c("resid", "year", "Countryname", "vote"))
+```
+
+
+## rename columns
+```{r, eval=FALSE}
+colnames(votes) <- c("resid", "year", "country", "vote")
+```
+
+
+## change votes to factor and self-descriptive
+```{r, eval=FALSE}
+votes$vote <- as.factor(votes$vote)
+levels(votes$vote) <- c("yes", "abstain", "no", "absent", "not member")
+```
+
+
+## use that data!
+```{r, eval=FALSE}
+usethis::use_data(votes, overwrite = TRUE)
+```
+
+After editing the file, it is necessary to run this code immediately! Run it either by selecting it in R GUI and pressing Ctrl+R, or in RStudio by clicking on “Run” button. When you run your code, R will process the data and save a new dataset to the data folder.
+
+## Document your dataset
+We have our data-raw folder ready - it reproducibly creates the dataset. The dataset is available in the data folder. So, now we only need to document that!
+
+Run:
+
+```{r}
+usethis::use_package_doc()
+```
+
+in your R console and R will open a documentation file in R folder for your package.
+
+You can use roxygen2 block for your documentation, see https://r-pkgs.org/data.html#documenting-data.
+
+My R/v0te-package.R file looks like this:
+
+```{r, eval=FALSE}
+
+#' @keywords internal
+"_PACKAGE"
+
+# The following block is used by usethis to automatically manage
+# roxygen namespace tags. Modify with care!
+## usethis namespace: start
+## usethis namespace: end
+NULL
+
+#' United Nations General Assembly Voting Data
+#'
+#' This is a dataset of roll-call votes in the UN General Assembly from 1946.
+#'
+#' @format A data frame with 4 variables:
+#' \describe{
+#'   \item{resid}{roll-call vote id}
+#'   \item{year}{year of vote}
+#'   \item{country}{country name}
+#'   \item{vote}{yes/no/abstain/absent/not a member}
+#' }
+#' @source \url{https://doi.org/10.7910/DVN/LEJUQZ}
+"votes"
+```
+
+
+The first two blocks were generated automatically, and I don’t touch that. The third block is written by me and contains basic info about the dataset.
+
+## Generate documentation files
+If you have your documentation ready, run:
+```{r, eval=FALSE}
+devtools::document()
+```
+
+
+This will generate documentation files for your package inside the man folder.
+
+## Congratulations!
+Your package is probably ready to use. Please, consider to add some permissive license, e.g. MIT:
+
+```{r, eval=FALSE}
+usethis::use_mit_license("Your Name")
+```
+
+And now you can test your package with:
+
+```{r, eval=FALSE}
+devtools::load_all()
+```
+
+You’ll see that you can use a new votes dataset and do some data science on that. :-)
+
+```{r, eval=FALSE}
+str(votes)
+```
+
+Lastly, check your package:
+
+```{r, eval=FALSE}
+devtools::check()
+```
+
+If everything looks good, just upload your package to some git hosting site.
