@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Applications | Bundle your codes in Package</title>
+  <title>Bundle your codes in Package</title>
   <meta name="description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Applications | Bundle your codes in Package" />
+  <meta property="og:title" content="Bundle your codes in Package" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="lugoga.github.com" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Applications | Bundle your codes in Package" />
+  <meta name="twitter:title" content="Bundle your codes in Package" />
   
   <meta name="twitter:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   
@@ -26,16 +26,16 @@
 <meta name="author" content="Ismael Kimirei" />
 
 
-<meta name="date" content="2020-11-13" />
+<meta name="date" content="2021-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions.html"/>
-<link rel="next" href="final-words.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+
+<link rel="next" href="introduction.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,8 +54,6 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -122,7 +120,8 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="css/book.css" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" type="text/css" />
 </head>
 
 <body>
@@ -135,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Simply and value your R session with packages</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome Note</a>
@@ -163,13 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Functions</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="functions.html"><a href="functions.html#document"><i class="fa fa-check"></i><b>3.1</b> Document</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#dependencies"><i class="fa fa-check"></i><b>3.2</b> Dependencies</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#special-case"><i class="fa fa-check"></i><b>3.3</b> Special Case</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
-<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="4" data-path="installing-the-package.html"><a href="installing-the-package.html"><i class="fa fa-check"></i><b>4</b> Installing the package</a></li>
+<li class="chapter" data-level="5" data-path="final.html"><a href="final.html"><i class="fa fa-check"></i><b>5</b> Final</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -191,15 +188,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="applications" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Applications</h1>
-<p>Some <em>significant</em> applications are demonstrated in this chapter.</p>
-<div id="example-one" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Example one</h2>
+<div id="header">
+<h1 class="title">Bundle your codes in Package</h1>
+<h2 class="subtitle"><em>R package development, writing good documentation and vignettes</em></h2>
+<p class="author"><em>Masumbuko Semba</em></p>
+<p class="author"><em>Nyamisi Peter</em></p>
+<p class="author"><em>Ismael Kimirei</em></p>
+<p class="date"><em>2021-01-20</em></p>
 </div>
-<div id="example-two" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Example two</h2>
+<div id="welcome-note" class="section level1 unnumbered" number="">
+<h1>Welcome Note</h1>
+<p>This book highlight some basic steps one need to know to start building R packages <span class="citation">(R Core Team <a href="#ref-R-base" role="doc-biblioref">2020</a>)</span>. It also describe techniques for writing good code for data science.</p>
+<p>The main author of this book, Masumbuko Semba <a href="https://semba-blog.netlify.app/">semba-blog.netlify.com</a> developed this version of the book while doing his doctoral study at the <a href="https://ims.udsm.ac.tz/">Institute of Marine Sciences of the University of Dar es Salaam</a>, Zanzibar. His prime aim was to help scientist in marine and freshwater systems have a glimpse of visualizing and exploring data in modern ways like using web apps. Several other contributors were instrumental in the development of materials in this book. Some of contributors include <a href="">Ismael Kimirei</a>, <a href="">Yohanna Shaghude</a>, <a href="">Nyamisi Peter</a>, <a href="">Baraka Kuguru</a>, <a href="">Ntahondo Nyandwi</a>, <a href="">Patroba Matiku</a>, <a href="">Mathew Silas</a></p>
+<div id="colophon" class="section level2 unnumbered" number="">
+<h2>Colophon</h2>
+<p>This book was written in <a href="http://bookdown.org/">bookdown</a><span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> inside <a href="http://www.rstudio.com/ide/">RStudio</a>. The website <a href="https://semba-blog.netlify.app/">semba-blog</a> is hosted with <a href="https://www.netlify.com">Netlify</a>, and automatically updated after every commit by <a href="https://travis-ci.org">Travis-CI</a>. The complete source is available from <a href="https://lugoga.com/shinyBook">GitHub</a>.</p>
+<p>The <a href="assets/logo.png">logo</a> and the book style was designed by <a href="https://semba-blog.netlify.app/">Masumbuko Semba</a>.</p>
+</div>
+<div id="license" class="section level2 unnumbered" number="">
+<h2>License</h2>
+<p>This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<center>
+<i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i>
+</center>
+<p><em>This is a human-readable summary of (and not a substitute for) the license.
+Please see <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" class="uri">https://creativecommons.org/licenses/by-sa/4.0/legalcode</a> for the full legal text.</em></p>
+<p><strong>You are free to:</strong></p>
+<ul>
+<li><p><strong>Share</strong>—copy and redistribute the material in any medium or
+format</p></li>
+<li><p><strong>Remix</strong>—remix, transform, and build upon the material for any
+purpose, even commercially.</p></li>
+</ul>
+<p>The licensor cannot revoke these freedoms as long as you follow the
+license terms.</p>
+<p><strong>Under the following terms:</strong></p>
+<ul>
+<li><p><strong>Attribution</strong>—You must give appropriate credit, provide a link
+to the license, and indicate if changes were made. You may do so in
+any reasonable manner, but not in any way that suggests the licensor
+endorses you or your use.</p></li>
+<li><p><strong>ShareAlike</strong>—If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.</p></li>
+<li><p><strong>No additional restrictions</strong>—You may not apply legal terms or
+technological measures that legally restrict others from doing
+anything the license permits.</p></li>
+</ul>
+<p><strong>Notices:</strong></p>
+<p>You do not have to comply with the license for elements of the
+material in the public domain or where your use is permitted by an
+applicable exception or limitation.</p>
+<p>No warranties are given. The license may not give you all of the
+permissions necessary for your intended use. For example, other rights
+such as publicity, privacy, or moral rights may limit how you use the
+material.</p>
+<p><strong>Citation</strong></p>
+<p>For attribution, please cite this work as;</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>Semba M., Peter N. and I. <span class="kw">Kimirei</span> (<span class="dv">2020</span>). Developing packages <span class="cf">in</span> R. Retrieve from <span class="st">&quot;https://lugoga.github.io/r-package/&quot;</span></span></code></pre></div>
+<p>And the BibTex format is;</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a><span class="op">@</span>misc{semba2020,</span>
+<span id="cb2-2"><a href="index.html#cb2-2"></a>    author =<span class="st"> </span>{Masumbuko Semba and Nyamisi Peter and Ismael Kimirei},</span>
+<span id="cb2-3"><a href="index.html#cb2-3"></a>    title =<span class="st"> </span>{Developing packages <span class="cf">in</span> R},</span>
+<span id="cb2-4"><a href="index.html#cb2-4"></a>    ur =<span class="st"> </span>{https<span class="op">:</span><span class="er">//</span>lugoga.github.io<span class="op">/</span>r<span class="op">-</span>package<span class="op">/</span>},</span>
+<span id="cb2-5"><a href="index.html#cb2-5"></a>    year =<span class="st"> </span>{<span class="dv">2020</span>}</span>
+<span id="cb2-6"><a href="index.html#cb2-6"></a>}</span></code></pre></div>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2020. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
 </div>
 </div>
             </section>
@@ -207,8 +268,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="final-words.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

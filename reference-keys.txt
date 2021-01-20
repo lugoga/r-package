@@ -26,4 +26,4 @@ document
 dependencies
 special-case
 installing-the-package
-final-words
+final

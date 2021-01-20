@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 R package | Bundle your codes in Package</title>
+  <title>Chapter 5 Final | Bundle your codes in Package</title>
   <meta name="description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 R package | Bundle your codes in Package" />
+  <meta property="og:title" content="Chapter 5 Final | Bundle your codes in Package" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="lugoga.github.com" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 R package | Bundle your codes in Package" />
+  <meta name="twitter:title" content="Chapter 5 Final | Bundle your codes in Package" />
   
   <meta name="twitter:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="functions.html"/>
+<link rel="prev" href="installing-the-package.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -188,245 +188,226 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-package" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> R package</h1>
-<p>When you need to develop a package, you need some tools for that task. Since I am going to illustrate to develop R package inside Rstudio, you ought to know some basic tools required to accomplish the task. Table <a href="r-package.html#tab:tab21">2.1</a> shows the package you need to install them to be able to work smoothly on package development. The version of the software or package is also shown in table <a href="r-package.html#tab:tab21">2.1</a> for you to check the version you have in your machine and whether you need to update them.</p>
+<div id="final" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Final</h1>
+<p>R packages provide a convenient and standardized mechanism for distributing R code to a wide audience. As part of building an R package you design an interface to a collection of functions that users can access to make use of the functionality you provide. R packages are directories containing R code, documentation files, package metadata, and export/import information. Exported functions are functions that are accessible by the user; imported functions are functions in other packages that are used by your package.</p>
+<p>We just scratch the surface on how one can start developing R packages. I hope you feel empowered to start developing your own packages now! We went through many of these steps one time only; however, in the development process, some of these steps are iterative. Table <a href="final.html#tab:tab51">5.1</a> highlight key steps we went together and it can be used as reference material when you get entangled along the stage, then table <a href="final.html#tab:tab51">5.1</a> can resourceful.</p>
 <table>
 <caption>
-<span id="tab:tab21">Table 2.1: </span>Software and Packages
+<span id="tab:tab51">Table 5.1: </span>Key functions in sequantial order during package developmnent
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
-Software/Package
+<th style="text-align:right;">
+SN
 </th>
 <th style="text-align:left;">
-Version
+Step
+</th>
+<th style="text-align:left;">
+tools
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-<strong>R</strong>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:left;">
-4.0.3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>Rstudio</strong>
+Load development packages
 </td>
 <td style="text-align:left;">
-1.4
+library(usethis), library(devtools)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-<code>devtools</code>
+<td style="text-align:right;">
+2
 </td>
 <td style="text-align:left;">
-2.3.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis</code>
+Create new package
 </td>
 <td style="text-align:left;">
-1.6.3
+usethis::create_package(“path/package”)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-<code>tidyverse</code>
+<td style="text-align:right;">
+3
 </td>
 <td style="text-align:left;">
-1.3.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>rlang</code>
+Optional: Connect to GitHub repo
 </td>
 <td style="text-align:left;">
-0.4.8
+usethis::use_git(), usethis::use_github()
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-<code>broom</code>
+<td style="text-align:right;">
+4
 </td>
 <td style="text-align:left;">
-0.7.1
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Add license
+</td>
+<td style="text-align:left;">
+usethis::use_mit_license(“Your name”)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Create new function
+</td>
+<td style="text-align:left;">
+usethis::use_r(“function”)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Test drive function
+</td>
+<td style="text-align:left;">
+devtools::load_all()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Insert Roxygen skeleton
+</td>
+<td style="text-align:left;">
+Menu -&gt; Code -&gt; Insert Roxygen Skeleton
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Document package
+</td>
+<td style="text-align:left;">
+devtools::document()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Specify package dependencies
+</td>
+<td style="text-align:left;">
+usethis::use_package(“package”)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Specify functions within packages
+</td>
+<td style="text-align:left;">
+package::function
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Document package
+</td>
+<td style="text-align:left;">
+devtools::document()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Check build
+</td>
+<td style="text-align:left;">
+devtools::check()
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Install package
+</td>
+<td style="text-align:left;">
+devtools::install(“path/package”), or
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+devtools::install_github(“user/repo”)
 </td>
 </tr>
 </tbody>
 </table>
-<p>R package development has become substantially easier in recent years with the introduction of a packages like <strong>devtools</strong> <span class="citation">(Wickham, Hester, and Chang <a href="#ref-devtools" role="doc-biblioref">2020</a>)</span> and <strong>usethis</strong> <span class="citation">(Wickham and Bryan <a href="#ref-usethis" role="doc-biblioref">2020</a>)</span>. These packages includes a variety of functions that facilitate software development in R. During package development stages, you will find that some functions you use once (single use) and others are used several times (multiple usage). Table <a href="r-package.html#tab:tab22">2.2</a> highlights some functions and whether are single used and multiple uses during package development</p>
-<table>
-<caption>
-<span id="tab:tab22">Table 2.2: </span>Single and multiple usage of functions
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-usage
-</th>
-<th style="text-align:left;">
-Purpose
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<code>usethis::create_package()</code>
-</td>
-<td style="text-align:left;">
-Single
-</td>
-<td style="text-align:left;">
-Initialize package
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_mit_license()</code>
-</td>
-<td style="text-align:left;">
-Single
-</td>
-<td style="text-align:left;">
-Add license to package
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_pipe()</code>
-</td>
-<td style="text-align:left;">
-Single
-</td>
-<td style="text-align:left;">
-Add pipe function as dependency
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>devtools::check()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-build package locally and check
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>devtools::load_all()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-load functions into memory
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_r()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-create R script for function
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_package()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-add package dependency
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>devtools::document()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-build and add documentation
-</td>
-</tr>
-</tbody>
-</table>
-<div id="package-development" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Package Development</h2>
-<p>We begin our package development using the function <code>usethis::create_package()</code>, which basically initialize the package development.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-package.html#cb5-1"></a>usethis<span class="op">::</span><span class="kw">create_package</span>(<span class="dt">path =</span> <span class="st">&quot;c:/Users/Semba/Desktop/babye&quot;</span>)</span></code></pre></div>
-<p>This function create an R project with an environment for package development in a location you specified. For this case I have created a package named <strong>babye</strong> on my desktop. The step-by-step of the process is shown in figure <a href="r-package.html#fig:fig21">2.1</a></p>
-<div class="figure"><span id="fig:fig21"></span>
-<img src="img/create_package.png" alt="package development" width="100%" />
-<p class="caption">
-Figure 2.1: package development
-</p>
-</div>
-<p>Now that we have a package. let’s check it. The function <code>devtools::check</code> was developed for this task as it updates the package documentation, build the package and submit over 50 checks for metadata, structure, R code, documentation and more. This can take a while to run, depending on how big your package is. It is helpful to run frequently, especially if you are planning on submitting to CRAN. But even for internal packages, it is still good practice. A screenshot of our first check is shown in figure <a href="r-package.html#fig:fig22">2.2</a> and spotted a single warning that our package needs a license in the DESCRIPTION file</p>
-<div class="figure"><span id="fig:fig22"></span>
-<img src="img/dev_check.png" alt="Check the package functions" width="100%" />
-<p class="caption">
-Figure 2.2: Check the package functions
-</p>
-</div>
-<p>We can fix this error by simply add a license on the package project folder. A standard recommendation is the MIT license because of its widely usage and permissions.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-package.html#cb6-1"></a>usethis<span class="op">::</span><span class="kw">use_mit_license</span>(<span class="dt">name =</span> <span class="st">&quot;Masumbuko Semba&quot;</span>)</span></code></pre></div>
-<p>Once we run the <code>usethis::use_mit_license(name = "Masumbuko Semba")</code> in the command line, it updates the description file and creates two new license files in the project folder (see figure <a href="r-package.html#fig:fig23">2.3</a>). It is recommended that the two licenses files never edited.</p>
-<div class="figure"><span id="fig:fig23"></span>
-<img src="img/add_license.png" alt="Package license" width="100%" />
-<p class="caption">
-Figure 2.3: Package license
-</p>
-</div>
-<p>Though the tools have added key parts of the DESCTIPTION file, you need to open it and complete the remaining parts and updates the fields with descriptive information. Once you have done that you can re-submit with <code>devtools::check()</code></p>
-<div class="figure"><span id="fig:unnamed-chunk-9"></span>
-<img src="img/dev_check_clean.png" alt="Package free of error" width="100%" />
-<p class="caption">
-Figure 2.4: Package free of error
-</p>
-</div>
-<p>We notice that our package is error-free</p>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-usethis">
-<p>Wickham, Hadley, and Jennifer Bryan. 2020. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis">https://CRAN.R-project.org/package=usethis</a>.</p>
-</div>
-<div id="ref-devtools">
-<p>Wickham, Hadley, Jim Hester, and Winston Chang. 2020. <em>Devtools: Tools to Make Developing R Packages Easier</em>. <a href="https://CRAN.R-project.org/package=devtools">https://CRAN.R-project.org/package=devtools</a>.</p>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="installing-the-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
