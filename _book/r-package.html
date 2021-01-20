@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 R package | Bundle your codes in Package</title>
+  <title>Bundle your codes in Package</title>
   <meta name="description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown #bookdown:version# and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 R package | Bundle your codes in Package" />
+  <meta property="og:title" content="Bundle your codes in Package" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="lugoga.github.com" />
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 R package | Bundle your codes in Package" />
+  <meta name="twitter:title" content="Bundle your codes in Package" />
   
   <meta name="twitter:description" content="A guide for R package development, writing good documentation and vignettes, writing robust software, cross-platform development, continuous integration tools, and distributing packages via CRAN and GitHub" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html"/>
-<link rel="next" href="functions.html"/>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -44,15 +44,15 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
@@ -128,66 +128,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<!--bookdown:title:start-->
+<div id="header">
+<h1 class="title">Bundle your codes in Package</h1>
+<h2 class="subtitle"><em>R package development, writing good documentation and vignettes</em></h2>
+<p class="author"><em>Masumbuko Semba</em></p>
+<p class="author"><em>Nyamisi Peter</em></p>
+<p class="author"><em>Ismael Kimirei</em></p>
+<p class="date"><em>2021-01-20</em></p>
+</div>
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
       <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Simply and value your R session with packages</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome Note</a>
+<!--bookdown:toc2:start-->
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#colophon"><i class="fa fa-check"></i>Colophon</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+<li><a href="#cover-image-graphicscover"><span class="toc-section-number">1</span> cover-image: graphics/cover</a>
+<ul>
+<li><a href="#colophon">Colophon</a></li>
+<li><a href="#license">License</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<li><a href="#introduction"><span class="toc-section-number">2</span> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#basic-structure-of-an-r-package"><i class="fa fa-check"></i><b>1.1</b> Basic Structure of an R Package</a>
+<li><a href="#basic-structure-of-an-r-package"><span class="toc-section-number">2.1</span> Basic Structure of an R Package</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#description-file"><i class="fa fa-check"></i><b>1.1.1</b> DESCRIPTION File</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#namespace-file"><i class="fa fa-check"></i><b>1.1.2</b> NAMESPACE File</a></li>
-<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#namespace-function-notation"><i class="fa fa-check"></i><b>1.1.3</b> Namespace Function Notation</a></li>
-<li class="chapter" data-level="1.1.4" data-path="introduction.html"><a href="introduction.html#loading-and-attaching-a-package-namespace"><i class="fa fa-check"></i><b>1.1.4</b> Loading and Attaching a Package Namespace</a></li>
-<li class="chapter" data-level="1.1.5" data-path="introduction.html"><a href="introduction.html#the-r-sub-directory"><i class="fa fa-check"></i><b>1.1.5</b> The R Sub-directory</a></li>
-<li class="chapter" data-level="1.1.6" data-path="introduction.html"><a href="introduction.html#the-man-sub-directory"><i class="fa fa-check"></i><b>1.1.6</b> The man Sub-directory</a></li>
-<li class="chapter" data-level="1.1.7" data-path="introduction.html"><a href="introduction.html#summary"><i class="fa fa-check"></i><b>1.1.7</b> Summary</a></li>
+<li><a href="#description-file"><span class="toc-section-number">2.1.1</span> DESCRIPTION File</a></li>
+<li><a href="#namespace-file"><span class="toc-section-number">2.1.2</span> NAMESPACE File</a></li>
+<li><a href="#namespace-function-notation"><span class="toc-section-number">2.1.3</span> Namespace Function Notation</a></li>
+<li><a href="#loading-and-attaching-a-package-namespace"><span class="toc-section-number">2.1.4</span> Loading and Attaching a Package Namespace</a></li>
+<li><a href="#the-r-sub-directory"><span class="toc-section-number">2.1.5</span> The R Sub-directory</a></li>
+<li><a href="#the-man-sub-directory"><span class="toc-section-number">2.1.6</span> The man Sub-directory</a></li>
+<li><a href="#summary"><span class="toc-section-number">2.1.7</span> Summary</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="r-package.html"><a href="r-package.html"><i class="fa fa-check"></i><b>2</b> R package</a>
+<li><a href="#r-package"><span class="toc-section-number">3</span> R package</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="r-package.html"><a href="r-package.html#package-development"><i class="fa fa-check"></i><b>2.1</b> Package Development</a></li>
+<li><a href="#package-development"><span class="toc-section-number">3.1</span> Package Development</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Functions</a>
+<li><a href="#functions"><span class="toc-section-number">4</span> Functions</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="functions.html"><a href="functions.html#document"><i class="fa fa-check"></i><b>3.1</b> Document</a></li>
-<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#dependencies"><i class="fa fa-check"></i><b>3.2</b> Dependencies</a></li>
-<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#special-case"><i class="fa fa-check"></i><b>3.3</b> Special Case</a></li>
+<li><a href="#document"><span class="toc-section-number">4.1</span> Document</a></li>
+<li><a href="#dependencies"><span class="toc-section-number">4.2</span> Dependencies</a></li>
+<li><a href="#special-case"><span class="toc-section-number">4.3</span> Special Case</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="installing-the-package.html"><a href="installing-the-package.html"><i class="fa fa-check"></i><b>4</b> Installing the package</a></li>
-<li class="chapter" data-level="5" data-path="final.html"><a href="final.html"><i class="fa fa-check"></i><b>5</b> Final</a></li>
-<li class="chapter" data-level="6" data-path="building-a-data-package.html"><a href="building-a-data-package.html"><i class="fa fa-check"></i><b>6</b> Building a Data Package</a>
+<li><a href="#installing-the-package"><span class="toc-section-number">5</span> Installing the package</a></li>
+<li><a href="#building-a-data-package"><span class="toc-section-number">6</span> Building a Data Package</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="building-a-data-package.html"><a href="building-a-data-package.html#install-devtools-package-in-r"><i class="fa fa-check"></i><b>6.1</b> Install ‘devtools’ package in R</a></li>
-<li class="chapter" data-level="6.2" data-path="building-a-data-package.html"><a href="building-a-data-package.html#create-a-new-package"><i class="fa fa-check"></i><b>6.2</b> Create a new package</a></li>
-<li class="chapter" data-level="6.3" data-path="building-a-data-package.html"><a href="building-a-data-package.html#edit-description-file"><i class="fa fa-check"></i><b>6.3</b> Edit DESCRIPTION file</a></li>
-<li class="chapter" data-level="6.4" data-path="building-a-data-package.html"><a href="building-a-data-package.html#add-your-data"><i class="fa fa-check"></i><b>6.4</b> Add your data</a></li>
-<li class="chapter" data-level="6.5" data-path="building-a-data-package.html"><a href="building-a-data-package.html#load-data"><i class="fa fa-check"></i><b>6.5</b> load data</a></li>
-<li class="chapter" data-level="6.6" data-path="building-a-data-package.html"><a href="building-a-data-package.html#extract-only-selected-columns"><i class="fa fa-check"></i><b>6.6</b> extract only selected columns</a></li>
-<li class="chapter" data-level="6.7" data-path="building-a-data-package.html"><a href="building-a-data-package.html#rename-columns"><i class="fa fa-check"></i><b>6.7</b> rename columns</a></li>
-<li class="chapter" data-level="6.8" data-path="building-a-data-package.html"><a href="building-a-data-package.html#change-votes-to-factor-and-self-descriptive"><i class="fa fa-check"></i><b>6.8</b> change votes to factor and self-descriptive</a></li>
-<li class="chapter" data-level="6.9" data-path="building-a-data-package.html"><a href="building-a-data-package.html#use-that-data"><i class="fa fa-check"></i><b>6.9</b> use that data!</a></li>
-<li class="chapter" data-level="6.10" data-path="building-a-data-package.html"><a href="building-a-data-package.html#document-your-dataset"><i class="fa fa-check"></i><b>6.10</b> Document your dataset</a></li>
-<li class="chapter" data-level="6.11" data-path="building-a-data-package.html"><a href="building-a-data-package.html#generate-documentation-files"><i class="fa fa-check"></i><b>6.11</b> Generate documentation files</a></li>
-<li class="chapter" data-level="6.12" data-path="building-a-data-package.html"><a href="building-a-data-package.html#congratulations"><i class="fa fa-check"></i><b>6.12</b> Congratulations!</a></li>
+<li><a href="#install-devtools-package-in-r"><span class="toc-section-number">6.1</span> Install ‘devtools’ package in R</a></li>
+<li><a href="#create-a-new-package"><span class="toc-section-number">6.2</span> Create a new package</a></li>
+<li><a href="#edit-description-file"><span class="toc-section-number">6.3</span> Edit DESCRIPTION file</a></li>
+<li><a href="#add-your-data"><span class="toc-section-number">6.4</span> Add your data</a></li>
+<li><a href="#load-data"><span class="toc-section-number">6.5</span> load data</a></li>
+<li><a href="#extract-only-selected-columns"><span class="toc-section-number">6.6</span> extract only selected columns</a></li>
+<li><a href="#rename-columns"><span class="toc-section-number">6.7</span> rename columns</a></li>
+<li><a href="#change-votes-to-factor-and-self-descriptive"><span class="toc-section-number">6.8</span> change votes to factor and self-descriptive</a></li>
+<li><a href="#use-that-data"><span class="toc-section-number">6.9</span> use that data!</a></li>
+<li><a href="#document-your-dataset"><span class="toc-section-number">6.10</span> Document your dataset</a></li>
+<li><a href="#generate-documentation-files"><span class="toc-section-number">6.11</span> Generate documentation files</a></li>
+<li><a href="#congratulations"><span class="toc-section-number">6.12</span> Congratulations!</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
+<li><a href="#final"><span class="toc-section-number">7</span> Final</a></li>
+<li><a href="#references">References</a></li>
 </ul>
-
+<!--bookdown:toc2:end-->
       </nav>
     </div>
 
@@ -203,293 +209,216 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-package" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> R package</h1>
-<p>When you need to develop a package, you need some tools for that task. Since I am going to illustrate to develop R package inside Rstudio, you ought to know some basic tools required to accomplish the task. Table <a href="r-package.html#tab:tab21">2.1</a> shows the package you need to install them to be able to work smoothly on package development. The version of the software or package is also shown in table <a href="r-package.html#tab:tab21">2.1</a> for you to check the version you have in your machine and whether you need to update them.</p>
-<table>
-<caption>
-<span id="tab:tab21">Table 2.1: </span>Software and Packages
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Software/Package
-</th>
-<th style="text-align:left;">
-Version
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<strong>R</strong>
-</td>
-<td style="text-align:left;">
-4.0.3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<strong>Rstudio</strong>
-</td>
-<td style="text-align:left;">
-1.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>devtools</code>
-</td>
-<td style="text-align:left;">
-2.3.2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis</code>
-</td>
-<td style="text-align:left;">
-1.6.3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>tidyverse</code>
-</td>
-<td style="text-align:left;">
-1.3.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>rlang</code>
-</td>
-<td style="text-align:left;">
-0.4.8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>broom</code>
-</td>
-<td style="text-align:left;">
-0.7.1
-</td>
-</tr>
-</tbody>
-</table>
-<p>R package development has become substantially easier in recent years with the introduction of a packages like <strong>devtools</strong> <span class="citation">(Wickham, Hester, and Chang <a href="#ref-devtools" role="doc-biblioref">2020</a>)</span> and <strong>usethis</strong> <span class="citation">(Wickham and Bryan <a href="#ref-usethis" role="doc-biblioref">2020</a>)</span>. These packages includes a variety of functions that facilitate software development in R. During package development stages, you will find that some functions you use once (single use) and others are used several times (multiple usage). Table <a href="r-package.html#tab:tab22">2.2</a> highlights some functions and whether are single used and multiple uses during package development</p>
-<table>
-<caption>
-<span id="tab:tab22">Table 2.2: </span>Single and multiple usage of functions
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-usage
-</th>
-<th style="text-align:left;">
-Purpose
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-<code>usethis::create_package()</code>
-</td>
-<td style="text-align:left;">
-Single
-</td>
-<td style="text-align:left;">
-Initialize package
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_mit_license()</code>
-</td>
-<td style="text-align:left;">
-Single
-</td>
-<td style="text-align:left;">
-Add license to package
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_pipe()</code>
-</td>
-<td style="text-align:left;">
-Single
-</td>
-<td style="text-align:left;">
-Add pipe function as dependency
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>devtools::check()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-build package locally and check
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>devtools::load_all()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-load functions into memory
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_r()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-create R script for function
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>usethis::use_package()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-add package dependency
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<code>devtools::document()</code>
-</td>
-<td style="text-align:left;">
-Multiple
-</td>
-<td style="text-align:left;">
-build and add documentation
-</td>
-</tr>
-</tbody>
-</table>
-<div id="package-development" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Package Development</h2>
-<p>We begin our package development using the function <code>usethis::create_package()</code>, which basically initialize the package development.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-package.html#cb5-1"></a>usethis<span class="op">::</span><span class="kw">create_package</span>(<span class="dt">path =</span> <span class="st">&quot;c:/Users/Semba/Desktop/babye&quot;</span>)</span></code></pre></div>
-<p>This function create an R project with an environment for package development in a location you specified. For this case I have created a package named <strong>babye</strong> on my desktop. The step-by-step of the process is shown in figure <a href="r-package.html#fig:fig21">2.1</a></p>
-<div class="figure"><span id="fig:fig21"></span>
-<img src="img/create_package.png" alt="package development" width="100%" />
-<p class="caption">
-Figure 2.1: package development
-</p>
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<div id="cover-image-graphicscover" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> cover-image: graphics/cover</h1>
+<p>Placeholder</p>
+<div id="colophon" class="section level2 unnumbered" number="">
+<h2 class="unnumbered" number="">Colophon</h2>
 </div>
-<p>Now that we have a package. let’s check it. The function <code>devtools::check</code> was developed for this task as it updates the package documentation, build the package and submit over 50 checks for metadata, structure, R code, documentation and more. This can take a while to run, depending on how big your package is. It is helpful to run frequently, especially if you are planning on submitting to CRAN. But even for internal packages, it is still good practice. A screenshot of our first check is shown in figure <a href="r-package.html#fig:fig22">2.2</a> and spotted a single warning that our package needs a license in the DESCRIPTION file</p>
-<div class="figure"><span id="fig:fig22"></span>
-<img src="img/dev_check.png" alt="Check the package functions" width="100%" />
-<p class="caption">
-Figure 2.2: Check the package functions
-</p>
-</div>
-<p>We can fix this error by simply add a license on the package project folder. A standard recommendation is the MIT license because of its widely usage and permissions.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-package.html#cb6-1"></a>usethis<span class="op">::</span><span class="kw">use_mit_license</span>(<span class="dt">name =</span> <span class="st">&quot;Masumbuko Semba&quot;</span>)</span></code></pre></div>
-<p>Once we run the <code>usethis::use_mit_license(name = "Masumbuko Semba")</code> in the command line, it updates the description file and creates two new license files in the project folder (see figure <a href="r-package.html#fig:fig23">2.3</a>). It is recommended that the two licenses files never edited.</p>
-<div class="figure"><span id="fig:fig23"></span>
-<img src="img/add_license.png" alt="Package license" width="100%" />
-<p class="caption">
-Figure 2.3: Package license
-</p>
-</div>
-<p>Though the tools have added key parts of the DESCTIPTION file, you need to open it and complete the remaining parts and updates the fields with descriptive information. Once you have done that you can re-submit with <code>devtools::check()</code></p>
-<div class="figure"><span id="fig:unnamed-chunk-9"></span>
-<img src="img/dev_check_clean.png" alt="Package free of error" width="100%" />
-<p class="caption">
-Figure 2.4: Package free of error
-</p>
-</div>
-<p>We notice that our package is error-free</p>
-
+<div id="license" class="section level2 unnumbered" number="">
+<h2 class="unnumbered" number="">License</h2>
+<!--chapter:end:index.Rmd-->
 </div>
 </div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-usethis">
-<p>Wickham, Hadley, and Jennifer Bryan. 2020. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis">https://CRAN.R-project.org/package=usethis</a>.</p>
+<div id="introduction" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Introduction</h1>
+<p>Placeholder</p>
+<div id="basic-structure-of-an-r-package" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> Basic Structure of an R Package</h2>
+<div id="description-file" class="section level3" number="2.1.1">
+<h3 number="2.1.1"><span class="header-section-number">2.1.1</span> DESCRIPTION File</h3>
 </div>
-<div id="ref-devtools">
-<p>Wickham, Hadley, Jim Hester, and Winston Chang. 2020. <em>Devtools: Tools to Make Developing R Packages Easier</em>. <a href="https://CRAN.R-project.org/package=devtools">https://CRAN.R-project.org/package=devtools</a>.</p>
+<div id="namespace-file" class="section level3" number="2.1.2">
+<h3 number="2.1.2"><span class="header-section-number">2.1.2</span> NAMESPACE File</h3>
+</div>
+<div id="namespace-function-notation" class="section level3" number="2.1.3">
+<h3 number="2.1.3"><span class="header-section-number">2.1.3</span> Namespace Function Notation</h3>
+</div>
+<div id="loading-and-attaching-a-package-namespace" class="section level3" number="2.1.4">
+<h3 number="2.1.4"><span class="header-section-number">2.1.4</span> Loading and Attaching a Package Namespace</h3>
+</div>
+<div id="the-r-sub-directory" class="section level3" number="2.1.5">
+<h3 number="2.1.5"><span class="header-section-number">2.1.5</span> The R Sub-directory</h3>
+</div>
+<div id="the-man-sub-directory" class="section level3" number="2.1.6">
+<h3 number="2.1.6"><span class="header-section-number">2.1.6</span> The man Sub-directory</h3>
+</div>
+<div id="summary" class="section level3" number="2.1.7">
+<h3 number="2.1.7"><span class="header-section-number">2.1.7</span> Summary</h3>
+<!--chapter:end:01-intro.Rmd-->
 </div>
 </div>
+</div>
+<div id="r-package" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> R package</h1>
+<p>Placeholder</p>
+<div id="package-development" class="section level2" number="3.1">
+<h2 number="3.1"><span class="header-section-number">3.1</span> Package Development</h2>
+<!--chapter:end:02-package.Rmd-->
+</div>
+</div>
+<div id="functions" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Functions</h1>
+<p>Placeholder</p>
+<div id="document" class="section level2" number="4.1">
+<h2 number="4.1"><span class="header-section-number">4.1</span> Document</h2>
+</div>
+<div id="dependencies" class="section level2" number="4.2">
+<h2 number="4.2"><span class="header-section-number">4.2</span> Dependencies</h2>
+</div>
+<div id="special-case" class="section level2" number="4.3">
+<h2 number="4.3"><span class="header-section-number">4.3</span> Special Case</h2>
+<!--chapter:end:03-functions.Rmd-->
+</div>
+</div>
+<div id="installing-the-package" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Installing the package</h1>
+<p>Placeholder</p>
+<!--chapter:end:04-application.Rmd-->
+</div>
+<div id="building-a-data-package" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> Building a Data Package</h1>
+<p>In data science, it’s vital to have some useful data available. But it’s much better to have this data ready in a reproducible way and provide it in a simple data R package, so that your team can start using it right away.</p>
+<p>Let’s make an example R data package in seven simple steps!</p>
+<div id="install-devtools-package-in-r" class="section level2" number="6.1">
+<h2 number="6.1"><span class="header-section-number">6.1</span> Install ‘devtools’ package in R</h2>
+<p>First, we need to install the {devtools} package. Start a new R session (or RStudio) and run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span></code></pre></div>
+<p>It comes along with package {usethis} and some handy and helper functions that will ease the creation of a new R package for you.</p>
+</div>
+<div id="create-a-new-package" class="section level2" number="6.2">
+<h2 number="6.2"><span class="header-section-number">6.2</span> Create a new package</h2>
+<p>Now it’s time to create a backbone of our new R package. This step is pretty straightforward, just run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>usethis<span class="op">::</span><span class="kw">create_package</span>(<span class="st">&quot;v0te&quot;</span>)</span></code></pre></div>
+<p>My package will be named “v0te” and will contain United Nations General Assembly Voting Data from the Harvard Dataverse.1</p>
+<p>This command will create a new folder in your home directory prepopulated with some files for further adjustment.</p>
+</div>
+<div id="edit-description-file" class="section level2" number="6.3">
+<h2 number="6.3"><span class="header-section-number">6.3</span> Edit DESCRIPTION file</h2>
+<p>The DESCRIPTION file contains some essential metadata about your package. It is already prefilled with few lines, so open it and fill in your name and a package description. For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>Package<span class="op">:</span><span class="st"> </span>v0te</span>
+<span id="cb3-2"><a href="#cb3-2"></a>Title<span class="op">:</span><span class="st"> </span>United Nations General Assembly Voting Data</span>
+<span id="cb3-3"><a href="#cb3-3"></a>Version<span class="op">:</span><span class="st"> </span><span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>Authors<span class="op">@</span>R<span class="op">:</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="st">    </span><span class="kw">person</span>(<span class="dt">given =</span> <span class="st">&quot;Petr&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>           <span class="dt">family =</span> <span class="st">&quot;Kajzar&quot;</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>           <span class="dt">role =</span> <span class="kw">c</span>(<span class="st">&quot;aut&quot;</span>, <span class="st">&quot;cre&quot;</span>),</span>
+<span id="cb3-8"><a href="#cb3-8"></a>           <span class="dt">email =</span> <span class="st">&quot;author@example.org&quot;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>Description<span class="op">:</span><span class="st"> </span>The package contains UN General Assembly Voting Data. It is a</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    dataset of roll<span class="op">-</span>call votes <span class="cf">in</span> the UN General Assembly from <span class="fl">1946.</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>License<span class="op">:</span><span class="st"> </span>MIT <span class="op">+</span><span class="st"> </span>file LICENSE</span>
+<span id="cb3-12"><a href="#cb3-12"></a>Encoding<span class="op">:</span><span class="st"> </span>UTF<span class="dv">-8</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>LazyData<span class="op">:</span><span class="st"> </span>true</span>
+<span id="cb3-14"><a href="#cb3-14"></a>Roxygen<span class="op">:</span><span class="st"> </span><span class="kw">list</span>(<span class="dt">markdown =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb3-15"><a href="#cb3-15"></a>RoxygenNote<span class="op">:</span><span class="st"> </span><span class="dv">7</span>.<span class="fl">1.1</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>Depends<span class="op">:</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="st">    </span><span class="kw">R</span> (<span class="op">&gt;=</span><span class="st"> </span><span class="fl">2.10</span>)</span></code></pre></div>
+</div>
+<div id="add-your-data" class="section level2" number="6.4">
+<h2 number="6.4"><span class="header-section-number">6.4</span> Add your data</h2>
+<p>OK, we have metadata prepared, now we’ll add some real data. We now need to create a data directory to store the data for this package. First we will create a directory to store our scripts that will collect and process our raw data. In your R concole, type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>usethis<span class="op">::</span><span class="kw">use_data_raw</span>(<span class="st">&quot;v0te&quot;</span>)</span></code></pre></div>
+<p>This will create a data-raw folder with v0te.R file. Open that (if it’s not already open) and edit.</p>
+<p>In my case, I will load remote data, edit that and save to data folder easily with usethis::use_data() function.</p>
+<p>My data-raw/v0te.R file looks like this:</p>
+</div>
+<div id="load-data" class="section level2" number="6.5">
+<h2 number="6.5"><span class="header-section-number">6.5</span> load data</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">load</span>(<span class="kw">url</span>(<span class="st">&quot;https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/LEJUQZ/MLNAHB&quot;</span>))</span></code></pre></div>
+</div>
+<div id="extract-only-selected-columns" class="section level2" number="6.6">
+<h2 number="6.6"><span class="header-section-number">6.6</span> extract only selected columns</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>votes &lt;-<span class="st"> </span><span class="kw">subset</span>(completeVotes, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;resid&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;Countryname&quot;</span>, <span class="st">&quot;vote&quot;</span>))</span></code></pre></div>
+</div>
+<div id="rename-columns" class="section level2" number="6.7">
+<h2 number="6.7"><span class="header-section-number">6.7</span> rename columns</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">colnames</span>(votes) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;resid&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;vote&quot;</span>)</span></code></pre></div>
+</div>
+<div id="change-votes-to-factor-and-self-descriptive" class="section level2" number="6.8">
+<h2 number="6.8"><span class="header-section-number">6.8</span> change votes to factor and self-descriptive</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>votes<span class="op">$</span>vote &lt;-<span class="st"> </span><span class="kw">as.factor</span>(votes<span class="op">$</span>vote)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">levels</span>(votes<span class="op">$</span>vote) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>, <span class="st">&quot;abstain&quot;</span>, <span class="st">&quot;no&quot;</span>, <span class="st">&quot;absent&quot;</span>, <span class="st">&quot;not member&quot;</span>)</span></code></pre></div>
+</div>
+<div id="use-that-data" class="section level2" number="6.9">
+<h2 number="6.9"><span class="header-section-number">6.9</span> use that data!</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>usethis<span class="op">::</span><span class="kw">use_data</span>(votes, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p>After editing the file, it is necessary to run this code immediately! Run it either by selecting it in R GUI and pressing Ctrl+R, or in RStudio by clicking on “Run” button. When you run your code, R will process the data and save a new dataset to the data folder.</p>
+</div>
+<div id="document-your-dataset" class="section level2" number="6.10">
+<h2 number="6.10"><span class="header-section-number">6.10</span> Document your dataset</h2>
+<p>We have our data-raw folder ready - it reproducibly creates the dataset. The dataset is available in the data folder. So, now we only need to document that!</p>
+<p>Run:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>usethis<span class="op">::</span><span class="kw">use_package_doc</span>()</span></code></pre></div>
+<p>in your R console and R will open a documentation file in R folder for your package.</p>
+<p>You can use roxygen2 block for your documentation, see <a href="https://r-pkgs.org/data.html#documenting-data" class="uri">https://r-pkgs.org/data.html#documenting-data</a>.</p>
+<p>My R/v0te-package.R file looks like this:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&#39; @keywords internal</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="st">&quot;_PACKAGE&quot;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># The following block is used by usethis to automatically manage</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co"># roxygen namespace tags. Modify with care!</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">## usethis namespace: start</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">## usethis namespace: end</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="ot">NULL</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&#39; United Nations General Assembly Voting Data</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&#39;</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="co">#&#39; This is a dataset of roll-call votes in the UN General Assembly from 1946.</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="co">#&#39;</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="co">#&#39; @format A data frame with 4 variables:</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="co">#&#39; \describe{</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a><span class="co">#&#39;   \item{resid}{roll-call vote id}</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a><span class="co">#&#39;   \item{year}{year of vote}</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="co">#&#39;   \item{country}{country name}</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a><span class="co">#&#39;   \item{vote}{yes/no/abstain/absent/not a member}</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a><span class="co">#&#39; }</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a><span class="co">#&#39; @source \url{https://doi.org/10.7910/DVN/LEJUQZ}</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a><span class="st">&quot;votes&quot;</span></span></code></pre></div>
+<p>The first two blocks were generated automatically, and I don’t touch that. The third block is written by me and contains basic info about the dataset.</p>
+</div>
+<div id="generate-documentation-files" class="section level2" number="6.11">
+<h2 number="6.11"><span class="header-section-number">6.11</span> Generate documentation files</h2>
+<p>If you have your documentation ready, run:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>devtools<span class="op">::</span><span class="kw">document</span>()</span></code></pre></div>
+<p>This will generate documentation files for your package inside the man folder.</p>
+</div>
+<div id="congratulations" class="section level2" number="6.12">
+<h2 number="6.12"><span class="header-section-number">6.12</span> Congratulations!</h2>
+<p>Your package is probably ready to use. Please, consider to add some permissive license, e.g. MIT:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>usethis<span class="op">::</span><span class="kw">use_mit_license</span>(<span class="st">&quot;Your Name&quot;</span>)</span></code></pre></div>
+<p>And now you can test your package with:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>devtools<span class="op">::</span><span class="kw">load_all</span>()</span></code></pre></div>
+<p>You’ll see that you can use a new votes dataset and do some data science on that. :-)</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">str</span>(votes)</span></code></pre></div>
+<p>Lastly, check your package:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>devtools<span class="op">::</span><span class="kw">check</span>()</span></code></pre></div>
+<p>If everything looks good, just upload your package to some git hosting site.</p>
+<!--chapter:end:045-datapackage.Rmd-->
+</div>
+</div>
+<div id="final" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> Final</h1>
+<p>R packages provide a convenient and standardized mechanism for distributing R code to a wide audience. As part of building an R package you design an interface to a collection of functions that users can access to make use of the functionality you provide. R packages are directories containing R code, documentation files, package metadata, and export/import information. Exported functions are functions that are accessible by the user; imported functions are functions in other packages that are used by your package.</p>
+<p>We just scratch the surface on how one can start developing R packages. I hope you feel empowered to start developing your own packages now! We went through many of these steps one time only; however, in the development process, some of these steps are iterative. Table @ref(tab:tab51) highlight key steps we went together and it can be used as reference material when you get entangled along the stage, then table @ref(tab:tab51) can resourceful.</p>
+<!--chapter:end:05-summary.Rmd-->
+</div>
+<div id="references" class="section level1 unnumbered" number="">
+<h1 class="unnumbered" number="">References</h1>
+<!--chapter:end:06-references.Rmd-->
+</div>
+<!--bookdown:body:end-->
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["r-package.pdf", "r-package.epub"],
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
+<!--bookdown:config-->
 
 </body>
 

@@ -40,3 +40,4 @@ use-that-data
 document-your-dataset
 generate-documentation-files
 congratulations
+cover-image-graphicscover
