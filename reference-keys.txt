@@ -9,7 +9,6 @@ fig:fig32
 fig:fig33
 fig:fig34
 fig:fig35
-tab:tab51
 introduction
 basic-structure-of-an-r-package
 description-file
@@ -26,7 +25,6 @@ document
 dependencies
 special-case
 installing-the-package
-final
 building-a-data-package
 install-devtools-package-in-r
 create-a-new-package
@@ -40,3 +38,4 @@ use-that-data
 document-your-dataset
 generate-documentation-files
 congratulations
+final
