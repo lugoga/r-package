@@ -1,5 +1,8 @@
 bookdown::gitbook:
-  css: style.css
+  css: [css/book.css, 'https://use.fontawesome.com/releases/v5.14.0/css/all.css']
+  font-import: https://fonts.googleapis.com/css?family=Roboto|Open+Sans
+  font-family: 'Roboto'
+  # css: style.css
   config:
     toc:
       before: |

@@ -156,11 +156,11 @@
             "issued": {
                 "date-parts": [
                     [
-                        2014
+                        2020
                     ]
                 ]
             },
-            "note": "R package version 1.5",
+            "note": "R package version 2.0.1",
             "title": "Magrittr: A forward-pipe operator for r",
             "title-short": "Magrittr",
             "type": "book"
@@ -217,7 +217,7 @@
                     ]
                 ]
             },
-            "note": "R package version 2.5",
+            "note": "R package version 2.6",
             "title": "Rmarkdown: Dynamic documents for r",
             "title-short": "Rmarkdown",
             "type": "book"

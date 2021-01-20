@@ -92,16 +92,18 @@ knitr::write_bib(c(
 
 **Citation**
 
-For attribution, please cite this work as
+For attribution, please cite this work as;
 
 ```{r, eval=FALSE}
-Semba M (2020). Developing packages in R. Retrieve from "https://lugoga.github.io/r-package/"
+Semba M., Peter N. and I. Kimirei (2020). Developing packages in R. Retrieve from "https://lugoga.github.io/r-package/"
 ```
 
-BibTex format
+And the BibTex format is;
+
 ```{r, eval=FALSE}
-@misc{semba2020p,
-    author = {Masumbuko, Semba},
+
+@misc{semba2020,
+    author = {Masumbuko Semba and Nyamisi Peter and Ismael Kimirei},
     title = {Developing packages in R},
     ur = {https://lugoga.github.io/r-package/},
     year = {2020}
